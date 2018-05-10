@@ -177,7 +177,10 @@ class CourseGradeFactory(object):
             course_data,
             force_update_subsections=force_update_subsections
         )
+        log.info("course_grade.attempted before update : %s", course_grade.attempted)
         course_grade = course_grade.update()
+        log.info("course_grade.attempted after update : %s", course_grade.attempted)
+
 
         should_persist = should_persist and course_grade.attempted
         if should_persist:

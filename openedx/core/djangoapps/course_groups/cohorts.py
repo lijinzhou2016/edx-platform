@@ -427,6 +427,7 @@ def remove_user_from_cohort(cohort, username_or_email):
         membership = CohortMembership.objects.get(course_user_group=cohort, user=user)
         course_key = membership.course_id
         membership.delete()
+        # _invalidate_cache(user.id, course_key)
         COHORT_MEMBERSHIP_UPDATED.send(sender=None, user=user, course_key=course_key)
     except CohortMembership.DoesNotExist:
         raise ValueError("User {} was not present in cohort {}".format(username_or_email, cohort))
@@ -457,7 +458,9 @@ def add_user_to_cohort(cohort, username_or_email):
 
         membership = CohortMembership(course_user_group=cohort, user=user)
         membership.save()  # This will handle both cases, creation and updating, of a CohortMembership for this user.
-        COHORT_MEMBERSHIP_UPDATED.send(sender=None, user=user, course_key=membership.course_id)
+        course_key = membership.course_id
+        # _invalidate_cache(user.id, course_key)
+        COHORT_MEMBERSHIP_UPDATED.send(sender=None, user=user, course_key=course_key)
         tracker.emit(
             "edx.cohort.user_add_requested",
             {
@@ -611,3 +614,11 @@ def _get_cohort_settings_from_modulestore(course):
         'cohorted_discussions': list(course.cohorted_discussions),
         'always_cohort_inline_discussions': course.always_cohort_inline_discussions
     }
+
+def _invalidate_cache(user, course_key):
+    """
+    Invalidate cohort cache
+    """
+    cache = get_cache(COHORT_CACHE_NAMESPACE)
+    cache_key = _cohort_cache_key(user, course_key)
+    cache.pop(cache_key, None)
