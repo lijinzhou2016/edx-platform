@@ -23,7 +23,7 @@ set -e
 # code is truly dead, but has been referenced incorrectly (spelling)
 # elsewhere in the code base, most likely in a refactor. Another example
 # of code that will be interpreted as dead by vulture is anything that
-# is used in a jinja template (which is not considered in the analysis).
+# is used in a template (which is not considered in the analysis).
 #
 # Therefore, the results of this script should be used as a jumping off
 # point for investigating potential dead code removal
