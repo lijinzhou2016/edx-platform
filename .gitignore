@@ -138,3 +138,6 @@ dist
 
 # Visual Studio Code
 .vscode
+
+# Vulture output
+dead-code.txt

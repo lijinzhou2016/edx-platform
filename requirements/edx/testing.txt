@@ -4,6 +4,7 @@
 #
 #    make upgrade
 #
+
 -e git+https://github.com/edx/acid-block.git@e46f9cda8a03e121a00c7e347084d142d22ebfb7#egg=acid-xblock
 -e common/lib/calc
 -e common/lib/capa
@@ -143,7 +144,7 @@ edx-rest-api-client==1.7.1
 edx-search==1.1.0
 edx-submissions==2.0.12
 edx-user-state-client==1.0.4
-edxval==0.1.14
+edxval==0.1.15
 elasticsearch==1.9.0
 enum34==1.1.6
 event-tracking==0.2.4
@@ -202,7 +203,7 @@ markupsafe==1.0
 mccabe==0.6.1             # via flake8, pylint
 mock==1.0.1
 mongoengine==0.10.0
-more-itertools==4.1.0     # via pytest
+more-itertools==4.2.0     # via pytest
 moto==0.3.1
 mysql-python==1.2.5
 needle==0.5.0             # via bok-choy
@@ -230,7 +231,7 @@ psutil==1.2.1
 py2neo==3.1.2
 py==1.5.3                 # via pytest, tox
 pyasn1-modules==0.2.1     # via service-identity
-pyasn1==0.4.2             # via pyasn1-modules, service-identity
+pyasn1==0.4.3             # via pyasn1-modules, service-identity
 pycodestyle==2.3.1
 pycontracts==1.7.1
 pycountry==1.20
