@@ -26,8 +26,7 @@
             enterpriseName,
             enterpriseReadonlyAccountFields,
             edxSupportUrl,
-            extendedProfileFields,
-            enableGDPRFlag
+            extendedProfileFields
         ) {
             var $accountSettingsElement, userAccountModel, userPreferencesModel, aboutSectionsData,
                 accountsSectionData, ordersSectionData, accountSettingsView, showAccountSettingsPage,
@@ -292,15 +291,14 @@
             aboutSectionsData.push(socialFields);
 
             // Add account deletion fields
-            if (enableGDPRFlag) {
-                accountDeletionFields = {
-                    title: gettext('Delete My Account'),
-                    fields: [],
-                    // Used so content can be rendered external to Backbone
-                    domHookId: 'account-deletion-container'
-                };
-                aboutSectionsData.push(accountDeletionFields);
-            }
+            accountDeletionFields = {
+                title: gettext('Delete My Account'),
+                fields: [],
+                // Used so content can be rendered external to Backbone
+                 domHookId: 'account-deletion-container'
+             };
+            aboutSectionsData.push(accountDeletionFields);
+
 
 
             // set TimeZoneField to listen to CountryField
