@@ -188,8 +188,7 @@ class CombinedLoginAndRegisterPage(PageObject):
         ).fulfill()
 
     def register(
-            self, email="", password="", username="", full_name="", country="", favorite_movie="",
-            terms_of_service=False
+            self, email="", password="", username="", full_name="", country="", favorite_movie=""
     ):
         """Fills in and submits the registration form.
 
@@ -204,7 +203,6 @@ class CombinedLoginAndRegisterPage(PageObject):
             username (unicode): The user's username.
             full_name (unicode): The user's full name.
             country (unicode): Two-character country code.
-            terms_of_service (boolean): If True, agree to the terms of service and honor code.
 
         """
         # Fill in the form
