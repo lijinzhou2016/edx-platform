@@ -293,15 +293,17 @@
             aboutSectionsData.push(socialFields);
 
             // Add account deletion fields
-            accountDeletionFields = {
-                title: gettext('Delete My Account'),
-                fields: [],
-                // Used so content can be rendered external to Backbone
-                 domHookId: 'account-deletion-container'
-             };
-            aboutSectionsData.push(accountDeletionFields);
+            if (displayAccountDeletion) {
+                accountDeletionFields = {
+                    title: gettext('Delete My Account'),
+                    fields: [],
+                    // Used so content can be rendered external to Backbone
+                    domHookId: 'account-deletion-container'
+                };
+                aboutSectionsData.push(accountDeletionFields);
+            }
 
-            // set TimeZoneField to listen to CountryField
+          // set TimeZoneField to listen to CountryField
             getUserField = function(list, search) {
                 return _.find(list, function(field) {
                     return field.view.options.valueAttribute === search;

@@ -310,8 +310,7 @@ class RegisterFromCombinedPageTest(UniqueCourseTest):
             username=username,
             full_name="Test User",
             country="US",
-            favorite_movie="Mad Max: Fury Road",
-            terms_of_service=True
+            favorite_movie="Mad Max: Fury Road"
         )
 
         # Expect that we reach the dashboard and we're auto-enrolled in the course
@@ -338,8 +337,6 @@ class RegisterFromCombinedPageTest(UniqueCourseTest):
         # Verify that the expected errors are displayed.
         errors = self.register_page.wait_for_errors()
         self.assertIn(u'Please enter your Public Username.', errors)
-        self.assertIn(u'You must agree to the édX Terms of Service and Honor Code',
-                      errors)
         self.assertIn(u'Select your country or region of residence.', errors)
         self.assertIn(u'Please tell us your favorite movie.', errors)
 
