@@ -26,7 +26,9 @@
             enterpriseName,
             enterpriseReadonlyAccountFields,
             edxSupportUrl,
-            extendedProfileFields
+            extendedProfileFields,
+            displayAccountDeletion
+
         ) {
             var $accountSettingsElement, userAccountModel, userPreferencesModel, aboutSectionsData,
                 accountsSectionData, ordersSectionData, accountSettingsView, showAccountSettingsPage,
@@ -298,8 +300,6 @@
                  domHookId: 'account-deletion-container'
              };
             aboutSectionsData.push(accountDeletionFields);
-
-
 
             // set TimeZoneField to listen to CountryField
             getUserField = function(list, search) {
